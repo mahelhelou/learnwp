@@ -1,0 +1,9 @@
+.menu__main-menu ul li {
+   display: inline;
+}
+
+/* When you want to change the view size */
+.wp-post-image {
+   /* width: 100%; */
+   /* height: auto; */
+}
