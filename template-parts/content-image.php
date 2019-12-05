@@ -1,4 +1,4 @@
-<article>
+<article <?php post_class(); // to style it in a different way ?>>
    <!-- In this file, delete publishing date -->
    <!-- Printing the post format to screen -->
    <?php // echo get_post_format(); ?>

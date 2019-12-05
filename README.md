@@ -246,3 +246,102 @@ add_theme_support('post-formats', array('video', 'image'));
 ```php
 <?php get_template_part('template-parts/content', get_post_format()); ?>
 ```
+
+## Sidebars
+1. Write this code in the `functions.php` file:
+
+```php
+// Registering sidebars
+function learno_sidebars() {
+   $home_sidebar = array(
+      'name' => 'Home Sidebar',
+      'id' => 'sidebar-1',
+      'description' => 'This is the homepage sidebar. Start adding widgets here.',
+      'before_widget' => '<div class="widget__wrapper">',
+      'after_widget' => '</div>',
+      'before_title' => '<h2 class="widget__title">',
+      'after_title' => '</h2>'
+   );
+
+   $blog_sidebar = array(
+      'name' => 'Blog Sidebar',
+      'id' => 'sidebar-2',
+      'description' => 'This is the blog sidebar. Start adding widgets here.',
+      'before_widget' => '<div class="widget__wrapper">',
+      'after_widget' => '</div>',
+      'before_title' => '<h2 class="widget__title">',
+      'after_title' => '</h2>'
+   );
+
+   register_sidebar($home_sidebar);
+   register_sidebar($blog_sidebar);
+}
+
+add_action('widgets_init', 'learno_sidebars');
+```
+
+* Two sidebars were created, one for `Home` page and another for `Blog` page, perfect!
+
+2. Add required widgets (built-in with wordpress) to each sidebar
+3. Create a file with the name `sidebar.php` and write this code:
+
+```php
+<?php
+// If the there're widgets in sidebar -> Show this sidebar
+if (is_active_sidebar('sidebar-2')) {
+   <?php dynamic_sidebar('sidebar-2');  
+}
+```
+
+* If you plan to use different `sidebars` in pages, create a file `sidebar-page-name.php`
+
+4. Show the sidebar in the website
+
+* Show `Home Sidebar`, `sidebar-home.php` has been created
+
+```php
+<?php // get_sidebar(); // if single sidebar for all pages ?>
+<?php get_sidebar('home'); ?>
+```
+
+* Show `Blog Sidebar`, `sidebar-blog.php` has been created
+
+```php
+<?php // get_sidebar(); // if single sidebar for all pages ?>
+<?php get_sidebar('blog'); ?>
+```
+
+## Sidebars for services items
+1. Add the name of `sidebars` to function
+
+```php
+...
+   // Service 1 sidebar
+   $service1 = array(
+      'name' => 'Service 1 Sidebar',
+      'id' => 'service-1',
+      'description' => 'This is the service 1 sidebar. Start adding widgets here.',
+      'before_widget' => '<div class="widget__wrapper">',
+      'after_widget' => '</div>',
+      'before_title' => '<h2 class="widget__title">',
+      'after_title' => '</h2>'
+   );
+...
+```
+
+2. Add `image` and `text` widgets to each `sidebar`. Upload an image, write a service title and short discription
+3. Show the sidebars in `page-home.php` file
+
+```php
+// container > row ..
+<div class="col-sm-4">
+   <div class="services__item">
+      <?php 
+         if (is_active_sidebar('service-1')) {
+            dynamic_sidebar('service-1');
+         } 
+      ?>
+   </div>
+</div>
+// more columns(services) ...
+```

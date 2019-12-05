@@ -15,7 +15,6 @@
          <section class="middle-area">
          <div class="container">
             <div class="row">
-               <aside class="sidebar col-md-3">Sidebar</aside>
                <div class="news col-md-9">
                   <?php 
                      if(have_posts()):
@@ -30,6 +29,10 @@
                      <?php endif;
                   ?>
                </div>
+               <aside class="sidebar col-md-3">
+                  <?php get_sidebar(); // if single sidebar for all pages ?>
+                  <?php get_sidebar('blog'); ?>
+               </aside>
             </div>
          </div>
          </section>

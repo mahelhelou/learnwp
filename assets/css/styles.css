@@ -7,3 +7,23 @@
    /* width: 100%; */
    /* height: auto; */
 }
+
+/* Margin between all normal posts */
+.type-post {
+   margin: 50px 0;
+}
+
+.format-image, .format-video {padding: 50px}
+
+.format-image {
+   background-color: #cccccc;
+}
+
+.format-video {
+   background-color: #eeeeee;
+}
+
+.widget__wrapper, img {
+   width: 250px;
+   height: 250px;
+}
