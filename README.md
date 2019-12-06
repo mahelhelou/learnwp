@@ -345,3 +345,53 @@ if (is_active_sidebar('sidebar-2')) {
 </div>
 // more columns(services) ...
 ```
+
+## Custom `WP Query`
+* Used in the case of fetching specific categoriess posts
+* Here you don't want to show normal loop posts, but you want to allow the query to start loop and seach in a place you specify
+
+### Parameter string method
+```php
+<section class="featured-post">
+   <div class="container">
+      <?php
+         // Prepare the query
+         $featured = new WP_Query('post_type=post&posts_per_page=2&cat=9'); // You can use array() method
+
+         // Start the loop
+         if ($featured->have_posts()) :
+            while ($featured->have_posts()) :
+               $featured->the_post();
+            endwhile;
+         endif;
+         // Reset custom WP_Query to allow this query work here only not for other places
+         wp_reset_postdata();
+      ?>
+      <h2 class="display-3"><?php the_title(); ?></h2>
+      <?php the_content(); ?>
+   </div>
+</section>
+```
+
+### Array method
+
+```php
+// Prepare the custom WP_Query
+$args = array(
+   'post_type' => 'post', // be default is post
+   'posts_per_page' => 2,
+   'category__not_in' => array(5), // e.g.
+   'category__in' => array(3, 9),
+   'offset' => 1 // ignore the first item from the list (to not repeat elements)
+);
+$secondary = new WP_Query($args);
+
+// Start the loop
+if ($secondary->have_posts()) :
+   while ($secondary->have_posts()) :
+      $secondary->the_post();
+   endwhile;
+endif;
+// Reset custom WP_Query to allow this query work here only not for other places
+wp_reset_postdata();
+```

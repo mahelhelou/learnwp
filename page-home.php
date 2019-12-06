@@ -42,7 +42,7 @@
          <div class="container">
             <div class="row">
                <div class="news col-md-9">
-                  
+
                </div>
                <aside class="sidebar col-md-3">
                   <?php // get_sidebar(); // if single sidebar for all pages ?>
