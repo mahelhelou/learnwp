@@ -23,8 +23,20 @@
                         
                         <?php get_template_part('template-parts/content', get_post_format()); ?>
 
-                        <?php endwhile;
-                        else: ?>
+                        <?php endwhile; ?>
+                        
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-md-6 btn-link text-white">
+                                 <?php next_posts_link('<< Newer Posts'); ?>
+                              </div>
+                              <div class="col-md-6 btn-link">
+                                 <?php previous_posts_link('>> Older Posts'); ?>
+                              </div>
+                           </div>
+                        </div>
+
+                        <?php else: ?>
                         <p>No posts to show yet.</p>
                      <?php endif;
                   ?>
