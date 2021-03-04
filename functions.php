@@ -1,9 +1,7 @@
 <?php
 
 function learno_files() {
-   // Fonts
-
-   // Styles
+   // Styles & fonts
    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '4.0.0', 'all');
    wp_enqueue_style('styles', get_template_directory_uri() . '/assets/css/styles.css', array(), '1.0', 'all');
 

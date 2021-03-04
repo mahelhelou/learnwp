@@ -20,7 +20,7 @@
             </div>
          </div>
       </section>
-   
+
       <!-- Navigation -->
       <section class="menu">
          <div class="container">
@@ -31,7 +31,7 @@
                      $args = array(
                         'theme_location' => 'main_menu'
                      );
-                  wp_nav_menu($args); 
+                  wp_nav_menu($args);
                   ?>
                </nav>
             </div>
